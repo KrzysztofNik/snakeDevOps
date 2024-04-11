@@ -1,0 +1,8 @@
+FROM snake
+
+WORKDIR /snake/tests
+RUN rm -rf gui
+WORKDIR ../
+
+RUN python3 -m pytest
+
