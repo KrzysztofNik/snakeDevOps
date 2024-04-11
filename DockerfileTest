@@ -1,6 +1,6 @@
 FROM snake
 
-WORKDIR /tests
+WORKDIR /snake/tests
 RUN rm -rf gui
 WORKDIR ../
 
