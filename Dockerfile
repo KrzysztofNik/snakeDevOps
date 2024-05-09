@@ -11,6 +11,6 @@ RUN if [ "$INSTALL_PYTHON_TK" = "true" ]; then \
     echo "python3-tk python3-tk/tkinter_default_qselect select 60" | debconf-set-selections -v; \
     apt-get install python3-tk -y; \
 fi
-RUN pip install numpy 
-RUN pip install matplotlib
-RUN pip install pytest
+RUN pip install numpy --break-system-packages
+RUN pip install matplotlib --break-system-packages
+RUN pip install pytest --break-system-packages
