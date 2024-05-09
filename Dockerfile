@@ -3,21 +3,18 @@ FROM ubuntu:latest
 ARG INSTALL_PYTHON_TK=true
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -y && apt-get install -y
-RUN apt-get install git -y
-RUN git clone https://github.com/chuyangliu/snake.git
+# Install necessary packages
+RUN apt-get update -y && apt-get install -y \
+    git \
+    python3 \
+    python3-pip \
+    python3-tk \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
+# Clone the repository
+RUN git clone https://github.com/chuyangliu/snake.git /snake
 WORKDIR /snake
 
-RUN apt-get install python3 -y
-RUN apt-get install python3-pip -y
-RUN if [ "$INSTALL_PYTHON_TK" = "true" ]; then \
-    echo "python3-tk python3-tk/tkinter_default_modselect select 8" | debconf-set-selections -v; \
-    echo "python3-tk python3-tk/tkinter_default_qselect select 60" | debconf-set-selections -v; \
-    apt-get install python3-tk -y; \
-fi
-RUN pip install numpy 
-RUN pip install matplotlib
-RUN pip install pytest
-
-
+# Install Python dependencies
+RUN pip install numpy matplotlib pytest
