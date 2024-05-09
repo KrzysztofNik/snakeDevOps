@@ -3,7 +3,7 @@ FROM ubuntu:latest
 ARG INSTALL_PYTHON_TK=true
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -y && apt-get in
+RUN apt-get update -y && apt-get install -y
 RUN apt-get install git -y
 RUN git clone https://github.com/chuyangliu/snake.git
 
