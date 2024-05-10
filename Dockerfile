@@ -14,3 +14,5 @@ fi
 RUN pip install numpy --break-system-packages
 RUN pip install matplotlib --break-system-packages
 RUN pip install pytest --break-system-packages
+
+CMD ["python3", "run.py"]
